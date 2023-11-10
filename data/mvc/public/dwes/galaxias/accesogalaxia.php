@@ -8,13 +8,11 @@
      Modos adicionales:
         - Acceso individual con use
         - Apodar Namespaces
-  */
-
-  echo "Namespace actual " . __NAMESPACE__;
-
+  */  
   include "galaxia.php";
   include "galaxiaenana/galaxia.php";
   
+  echo "Namespace actual " . __NAMESPACE__; 
 
   echo "<h3>Acceso sin cualificar</h3>";
   //esta en el mismo namespace(carpeta).No hac falta referencia especial
@@ -45,6 +43,10 @@
 
   use function \Dwes\Galaxias\Galaxiaenana\observar as mirar;
   mirar("...no se ve hay muchas estrellas");
+
+  echo "<br>Probando NAMESPACE GLOBAL: ";
+  echo "<br>Funcion time de la clase : " . time();
+  echo "<br>Hora actual: " . \time();
 
 
   

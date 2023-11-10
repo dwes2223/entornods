@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Controllers;
+
 //echo getcwd(); //para mostrar el directorio que esta cargando
 require_once "../app/models/User.php";
 
@@ -10,7 +12,8 @@ class UserController
     }
     
     public function index(){
-        $users = User::all(); //llama al modelo
+        //IMPORTANTE: Al meter los namespaces la linea va 
+        $users = \App\Models\User::all(); //llama al modelo
         require "../app/views/index.php";  //invoca a la vista
     }//index
 
@@ -18,7 +21,7 @@ class UserController
     public function show($argumentos){        
         //$id = $_GET["id"];        
         $id = (int)$argumentos[0];        
-        $user = User::find($id);                
+        $user = \App\Models\User::find($id);                
         require "../app/views/show.php";
     }//show
     

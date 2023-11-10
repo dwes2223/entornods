@@ -1,4 +1,5 @@
 <?php
+  namespace Core;
 
    // Esta clase provee de enrutameiento entre los diferentes controladores  
    /* Forma de acceder a los recursos: http://mvc.local/controlador/metodo/argumento1/argumento2
@@ -38,8 +39,15 @@ class App{
         die();
     }
 
+    
     //Invoco al controlador , metodo y argumentos obtenidos.
-    $controllerObject = new $controllerName;
+    
+    // IMPORTANTE ! Al meter los namespaces  la linea de abajo no funciona !!!
+    //La solucion es la siguiente linea
+    $controllerName = '\\App\\Controllers\\' . $controllerName;
+    
+    $controllerObject = new $controllerName;  
+
       //verifico si realmente existe el metodo de la peticion en el controlador.
     if(method_exists($controllerName,$method)){            
         $controllerObject->$method($arguments); //invoco al metodo del controlador con los param restantes

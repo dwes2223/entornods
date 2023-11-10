@@ -9,4 +9,4 @@
 
 require "core/App.php"; //App sera el enrutador a los diferentes controladores...
 
-$app = new App();
+$app = new \Core\App();
