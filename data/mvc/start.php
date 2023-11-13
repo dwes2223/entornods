@@ -8,5 +8,10 @@
 */
 
 require "core/App.php"; //App sera el enrutador a los diferentes controladores...
-
 $app = new \Core\App();
+
+/*Para probar el acceso al modelo. I
+require "core/Model.php";
+Core\Model::db();
+die();
+*/

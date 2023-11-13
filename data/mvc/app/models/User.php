@@ -1,31 +1,31 @@
 <?php
   namespace App\Models;
 
-  class User{
+  require "../core/Model.php";
 
-    //Array multidimensional con los datos del usuario
-    const USERS = [
-        array(1,"Juan"),
-        array(2,"Ana"),
-        array(3,"Fernando"),
-        array(4,"Maria")        
-    ];
+  use Core\Model;
 
-    //funcion devuelve todos los datos
+  /* No es necesario definir atributos.
+     PHP permite definirlos durante la ejecucion.
+  */
+  class User extends Model
+  {
     public static function all(){
-        return User::USERS;
-    }//all
-
-    //funcion devuvelve  uno en particular
+        //Recuperar todos
+        echo "<br>Recuperando todos los usuarios";
+    }
     public static function find($id){
-        return User::USERS[$id-1]; //los usuarios empiezan en 1 , pero el array en 0
-        
-        /*   Otra forma de recuperar los usuarios: usuario = [1,Juan]
-        foreach(User::USERS as $clave => $usuario){ 
-            if ($usuario[0] == $id) {
-                return $usuario;
-            }       
-        }//foreach
-        */
-    }//find
-  }//fin_clase
+        //Recuperar uno especifico
+        echo "<br>Recuperando 1 usuario con id: $id";
+    }
+    public function insert(){
+        //Insertar NUEVO usuario
+    }
+    public function delete(){
+        //Borrar un usuario en particular
+    }
+    public function save() {
+        // Actualizar usuario EXSISTENTE
+    }
+  }//final_clase
+  
