@@ -6,6 +6,7 @@
   use const Config\DSN;
   use const Config\USER;
   use const Config\PASSWORD;
+  
 
   use PDO;
   use PDOException; //necesario para usar PDO
