@@ -27,5 +27,22 @@ class UserController
         $user = User::find($id);                
         require "../app/views/user/show.php";
     }//show
+
+    //CREATE: Muestra el la vista de alta de nuevo usuario
+    public function create(){
+        require "../app/views/user/create.php";
+    }
+
+    //CREATE: Almacena en la bbdd un nueva fila
+    public function store(){
+        $user = new User(); //nuevo objeto user del Modelo
+        $user->name = $_REQUEST["name"];
+        $user->surname = $_REQUEST["surname"];
+        $user->email = $_REQUEST["email"];
+        $user->birthdate = $_REQUEST["birthdate"];        
+        $user->insert();        
+        header("Location:/user"); //Una vez insertado redirijo al index de user.
+
+    }
     
 }//fin class

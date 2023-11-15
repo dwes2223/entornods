@@ -22,7 +22,7 @@
     </li>
     <li>
         <strong>Fecha Nacimiento: </strong>
-        <?php echo $user->birthdate->format('d-m-Y')?>
+        <?php echo $user->birthdate ? $user->birthdate :  "no nacido"?>
     </li>
 </ul>
 <hr>

@@ -28,8 +28,9 @@
   {
 
     //añadido en mvc04 v2 despues de READ
-    public function __construct(){
-        $this->birthdate = DateTime::createFromFormat('Y-m-d',$this->birthdate);                 
+    public function __construct(){               
+       // $this->birthdate = DateTime::createFromFormat('Y-m-d',$this->birthdate); No funciona con PHP 8               
+        
     }
     public static function all(){
         //Recuperar todos
@@ -56,9 +57,19 @@
         return $user;
 
     }
+    
+    //Insertar NUEVO usuario
     public function insert(){
-        //Insertar NUEVO usuario
+      $dbh = User::db();
+      $sql = "INSERT INTO users(name,surname,email,birthdate) VALUES(:name,:surname,:email,:birthdate)";    
+      $statement = $dbh->prepare($sql);
+      $statement->bindValue(":name",$this->name);
+      $statement->bindValue(":surname",$this->surname);
+      $statement->bindValue(":email",$this->email);         
+      $statement->bindValue(":birthdate",$this->birthdate); 
+      return $statement->execute();
     }
+
     public function delete(){
         //Borrar un usuario en particular
     }
