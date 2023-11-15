@@ -6,7 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-
 <h1>Lista de usuarios</h1>    
 <table>
     <tr>
@@ -19,8 +18,9 @@
           <tr>
           <td><?php echo $user->name ?></td>
           <td><?php echo $user->surname ?></td>
-          <td><?php echo $user->email ?></td>
-          <td><?php echo $user->birthdate ?></td>
+          <td><?php echo $user->email ?></td>          
+          <!-- Formato añadido en rama mvc04 v2 (despues de READ) -->
+          <td><?php echo $user->birthdate->format('d-m-Y') ?></td>
           <td>
             <a href="/user/show/<?php echo $user->id ?>" class="btn btn-primary">Ver </a>
           </td>

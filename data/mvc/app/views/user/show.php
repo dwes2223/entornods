@@ -22,7 +22,7 @@
     </li>
     <li>
         <strong>Fecha Nacimiento: </strong>
-        <?php echo $user->birthdate?>
+        <?php echo $user->birthdate->format('d-m-Y')?>
     </li>
 </ul>
 <hr>

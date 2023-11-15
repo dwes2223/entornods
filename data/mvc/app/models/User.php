@@ -7,6 +7,8 @@
 
   use PDO; //Añadido en mvc04 . necesario para conexion bbdd
 
+  use DateTime; //Añadido mvc04 v2 despues de Read
+
 
   /* No es necesario definir atributos.     PHP permite definirlos durante la ejecucion.
       - Extiende  de la clase Model que devuelve un conexion a la base de datos.
@@ -24,6 +26,11 @@
  
   class User extends Model
   {
+
+    //añadido en mvc04 v2 despues de READ
+    public function __construct(){
+        $this->birthdate = DateTime::createFromFormat('Y-m-d',$this->birthdate);                 
+    }
     public static function all(){
         //Recuperar todos
         //echo "<br>Recuperando todos los usuarios";
