@@ -11,6 +11,7 @@
   use PDO;
   use PDOException; //necesario para usar PDO
 
+#[\AllowDynamicProperties]
  class Model
  {
     protected static function db(){

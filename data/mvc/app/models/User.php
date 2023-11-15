@@ -21,14 +21,14 @@
      https://www.php.net/manual/en/migration82.deprecated.php
 
    */
-  #[\AllowDynamicProperties]
+ 
   class User extends Model
   {
     public static function all(){
         //Recuperar todos
         //echo "<br>Recuperando todos los usuarios";
         //Añadido en rama mvc04
-        $dbh = User::db(); //hereda el metodo db de Model implicitamente.
+        $dbh = User::db(); //hereda el metodo db de Model implicitamente. Tb funciona con self
         $sql = "SELECT * FROM users";
         $statement = $dbh->query($sql);
         $users = $statement->fetchAll(PDO::FETCH_CLASS,User::class);   
@@ -38,7 +38,16 @@
     }
     public static function find($id){
         //Recuperar uno especifico
-        echo "<br>Recuperando 1 usuario con id: $id";
+        //echo "<br>Recuperando 1 usuario con id: $id";
+        $dbh = self::db();
+        $sql = "SELECT * FROM users where id = :id";
+        $statement = $dbh->prepare($sql);
+        $statement->bindParam(":id",$id);
+        $statement->execute();
+        $statement->setFetchMode(PDO::FETCH_CLASS,User::class); //guardo los campos como attr de la clse
+        $user = $statement->fetch(PDO::FETCH_CLASS); //recupero un unico registro
+        return $user;
+
     }
     public function insert(){
         //Insertar NUEVO usuario

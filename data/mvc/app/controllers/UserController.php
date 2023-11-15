@@ -22,10 +22,10 @@ class UserController
 
     // Debe recuperar solo el usuario con el id indicado en la solicitud de la url
     public function show($argumentos){        
-        //$id = $_GET["id"];        
+        //$id = $_GET["id"];             
         $id = (int)$argumentos[0];        
-        $user = \App\Models\User::find($id);                
-        require "../app/views/show.php";
+        $user = User::find($id);                
+        require "../app/views/user/show.php";
     }//show
     
 }//fin class
