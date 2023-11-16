@@ -24,6 +24,9 @@
           <td>
             <a href="/user/show/<?php echo $user->id ?>" class="btn btn-primary">Ver </a>
           </td>
+          <td>
+            <a href="/user/edit/<?php echo $user->id ?>" class="btn btn-primary">Editar</a>
+          </td>
           </tr>
         <?php } ?>
     

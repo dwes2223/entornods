@@ -44,5 +44,30 @@ class UserController
         header("Location:/user"); //Una vez insertado redirijo al index de user.
 
     }
+
+    /* UPDATE: Método edit que genera un formulario de modificación con los datos del registro. 
+       Este método implica buscar en la base de datos antes de construir el formulario.
+    */
+    public function edit($argumentos){
+        $id = (int)$argumentos[0];
+        $user = User::find($id); //busco el usuario para mostrar sus datos
+        require "../app/views/user/edit.php"; //muestro en la vista los datos del user seleccionado       
+    }//fin_edit
+
+    /* UPDATE : Método update que recibe los datos de dicho formulario. Igualmente, debemos buscar el registro 
+       en la base de datos y después modificarlo.
+    */
+    public function update(){
+        $id = $_REQUEST["id"];
+        $user = User::find($id); //busco el usuario a actualizar los datos
+        $user->name = $_REQUEST["name"];
+        $user->surname = $_REQUEST["surname"];
+        $user->email = $_REQUEST["email"];
+        $user->birthdate = $_REQUEST["birthdate"];
+        $user->save();
+        header("Location:/user"); //Una vez insertado redirijo al index de user.
+
+    }//fin_update
+
     
 }//fin class

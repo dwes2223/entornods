@@ -38,6 +38,10 @@
       */
       $this->birthdate = isset($this->birthdate) ? $this->birthdate : " " ;      
       $this->birthdate = DateTime::createFromFormat('Y-m-d', $this->birthdate);
+
+      //Ejemplo de conversion entre diferentes formatos de d/m/Y a Y-m-D
+      //$start_date='04/05/2018';
+      //$convertedDate= DateTime::createFromFormat('d/m/Y', $start_date)->format('Y-m-d');
       
         
     }
@@ -76,14 +80,25 @@
       $statement->bindValue(":surname",$this->surname);
       $statement->bindValue(":email",$this->email);         
       $statement->bindValue(":birthdate",$this->birthdate); 
-      return $statement->execute();
+      return $statement->execute(); //devuelve ok o false en caso de error
     }
 
     public function delete(){
         //Borrar un usuario en particular
     }
+    
+    // Actualizar usuario EXSISTENTE. Tengo que buscar ese usuario en particular
     public function save() {
-        // Actualizar usuario EXSISTENTE
+      $dbh = User::db();      
+      $sql = "UPDATE users SET name = :name,surname = :surname,
+      email = :email,birthdate = :birthdate WHERE id = :id";      
+      $statement = $dbh->prepare($sql);
+      $statement->bindValue(":id",$this->id);
+      $statement->bindValue(":name",$this->name);
+      $statement->bindValue(":surname",$this->surname);
+      $statement->bindValue(":email",$this->email);        
+      $statement->bindValue(":birthdate",$this->birthdate);
+      return $statement->execute();
     }
   }//final_clase
   
