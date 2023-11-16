@@ -28,8 +28,17 @@
   {
 
     //añadido en mvc04 v2 despues de READ
-    public function __construct(){               
-       // $this->birthdate = DateTime::createFromFormat('Y-m-d',$this->birthdate); No funciona con PHP 8               
+    public function __construct(){                    
+      
+      /* Esta linea se necesita porque desde la version 8 de php no se puede
+         utilizar DateTimme::createFromFormta con el segund valor a nulo.
+         En el index funciona porque fetch te crea los parametros automaticamente.
+         Pero en el metodo store se crea un objeto del constructor por defecto con las propiedades a null,
+         y es ahi donde falla.
+      */
+      $this->birthdate = isset($this->birthdate) ? $this->birthdate : " " ;      
+      $this->birthdate = DateTime::createFromFormat('Y-m-d', $this->birthdate);
+      
         
     }
     public static function all(){
@@ -37,8 +46,8 @@
         //echo "<br>Recuperando todos los usuarios";
         //Añadido en rama mvc04
         $dbh = User::db(); //hereda el metodo db de Model implicitamente. Tb funciona con self
-        $sql = "SELECT * FROM users";
-        $statement = $dbh->query($sql);
+        $sql = "SELECT * FROM users";        
+        $statement = $dbh->query($sql);        
         $users = $statement->fetchAll(PDO::FETCH_CLASS,User::class);   
         return $users; //devuelve todas las filas de usuario.
 

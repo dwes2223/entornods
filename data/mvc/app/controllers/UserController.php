@@ -35,12 +35,12 @@ class UserController
 
     //CREATE: Almacena en la bbdd un nueva fila
     public function store(){
-        $user = new User(); //nuevo objeto user del Modelo
-        $user->name = $_REQUEST["name"];
-        $user->surname = $_REQUEST["surname"];
-        $user->email = $_REQUEST["email"];
-        $user->birthdate = $_REQUEST["birthdate"];        
-        $user->insert();        
+        $user = new User();
+        $user->name = $_REQUEST['name'];
+        $user->surname = $_REQUEST['surname'];
+        $user->birthdate = $_REQUEST['birthdate'];
+        $user->email = $_REQUEST['email'];
+        $user->insert();     
         header("Location:/user"); //Una vez insertado redirijo al index de user.
 
     }

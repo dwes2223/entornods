@@ -19,8 +19,8 @@
           <td><?php echo $user->name ?></td>
           <td><?php echo $user->surname ?></td>
           <td><?php echo $user->email ?></td>          
-          <!-- Formato añadido en rama mvc04 v2 (despues de READ) -->
-          <td><?php echo $user->birthdate ? $user->birthdate :  "no nacido"?></td>
+          <!-- Formato añadido en rama mvc04 v2 (despues de READ) --> 
+          <td><?php echo $user->birthdate ? $user->birthdate->format('d-m-Y') : 'Fecha nac. desconocida' ?></td>                   
           <td>
             <a href="/user/show/<?php echo $user->id ?>" class="btn btn-primary">Ver </a>
           </td>
