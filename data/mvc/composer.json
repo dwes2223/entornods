@@ -1,0 +1,20 @@
+{
+    "name": "alumno/mvc",
+    "description": "proyecto mvc",
+    "authors": [
+        {
+            "name": "egonzalez",
+            "email": "egonzaleziessh@gmail.com"
+        }
+    ],
+    "require": {},
+
+    "autoload": {
+        "psr-4": {
+            "Core\\" : "core/",
+            "App\\Controllers\\" : "app/controllers/",
+            "App\\Models\\" : "app/models/"
+
+        }
+    }
+}
