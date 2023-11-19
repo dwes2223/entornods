@@ -81,11 +81,7 @@
       $statement->bindValue(":email",$this->email);         
       $statement->bindValue(":birthdate",$this->birthdate); 
       return $statement->execute(); //devuelve ok o false en caso de error
-    }
-
-    public function delete(){
-        //Borrar un usuario en particular
-    }
+    } 
     
     // Actualizar usuario EXSISTENTE. Tengo que buscar ese usuario en particular
     public function save() {
@@ -99,6 +95,15 @@
       $statement->bindValue(":email",$this->email);        
       $statement->bindValue(":birthdate",$this->birthdate);
       return $statement->execute();
-    }
+    }//fin_save
+
+    //Eliminar un usuario al que le hemos asignado el id desde el controlador
+    public function delete(){
+      $dbh = User::db();
+      $sql = "DELETE FROM users WHERE id = :id";
+      $statement = $dbh->prepare($sql);
+      $statement->bindValue(":id",$this->id);
+      return $statement->execute();    
+    }//fin_save
   }//final_clase
   

@@ -23,7 +23,7 @@
         </div>
         <div class="form-group">
             <label for="birthdate">Fecha Nac</label>
-            <input type="date" name="birthdate" id="birthdate" value="<?= $user->birthdate->format('Y-m-d')?>">
+            <input type="date" name="birthdate" id="birthdate" required value="<?= $user->birthdate->format('Y-m-d')?>">
         </div>
         <br>
         <button type="submit" class="btn btn-default">Enviar</button>     

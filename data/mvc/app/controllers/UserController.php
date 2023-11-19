@@ -69,5 +69,16 @@ class UserController
 
     }//fin_update
 
+    /* DELETE: Metodo delete. Recibe el id de usuario a eliminar mediante la URL y lo establece en la propiedad id
+        del objeto a eliminar. Previamente debemos buscar si existe el uuario        
+    */
+    public function delete($argumentos){
+        $id = (int)$argumentos[0];
+        $user = User::find($id); // que pasa si introduzco un id que no existe? -> da Error       
+        $located = $user ? $user->delete() && header("Location:/user")  : 
+        "<strong>Usuario no encontrado!</strong><br><a href=\"/user\">Volver</a>";
+        echo $located;        
+    }//fin_delete
+
     
 }//fin class

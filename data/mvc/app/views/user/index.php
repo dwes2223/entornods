@@ -7,6 +7,7 @@
 </head>
 <body>
 <h1>Lista de usuarios</h1>    
+<p><a href="/user/create">Nuevo Usuario</a></p>
 <table>
     <tr>
         <th>Nombre</th>
@@ -26,6 +27,10 @@
           </td>
           <td>
             <a href="/user/edit/<?php echo $user->id ?>" class="btn btn-primary">Editar</a>
+          </td>
+          <td>
+            <a href="/user/delete/<?php echo $user->id ?>" onclick="return confirm('Estas seguro de eliminarlo?')"
+             class="btn btn-primary">Eliminar</a>
           </td>
           </tr>
         <?php } ?>
