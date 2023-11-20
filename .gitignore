@@ -1,6 +1,5 @@
-/data/mvc/vendor
+data/*
 !data/mvc
 !data/web1
 !data/web2
 !data/init-db
-data/*
