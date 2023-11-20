@@ -1,5 +1,4 @@
 data/*
-/data/mvc/vendor
 !data/web1
 !data/mvc
 !data/web2
