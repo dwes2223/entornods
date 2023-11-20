@@ -1,0 +1,5 @@
+data/*
+!data/mvc/*
+!data/web1
+!data/web2
+!data/init-db

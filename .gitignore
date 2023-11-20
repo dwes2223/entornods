@@ -1,6 +1,10 @@
 data/*
-!data/mvc/*
-/data/mvc/vendor/*
+!data/init-db
+!data/mvc/app
+!data/mvc/config
+!data/mvc/core
+!data/mvc/public
+!data/mvc/*.php
+!data/mvc/composer.*
 !data/web1
 !data/web2
-!data/init-db
