@@ -6,7 +6,9 @@ namespace App\Controllers;
 use App\Models\User;
 
 //echo getcwd(); //para mostrar el directorio que esta cargando
-require_once "../app/models/User.php";
+//require_once "../app/models/User.php"; // Comentado en rama mvc06 !!
+
+use Dompdf\Dompdf; //Añadido mvc06 para crear un pdf
 
 class UserController 
 {
@@ -79,6 +81,21 @@ class UserController
         "<strong>Usuario no encontrado!</strong><br><a href=\"/user\">Volver</a>";
         echo $located;        
     }//fin_delete
+
+    // Funcion que genera un pdf a partir de html o PHP
+    // Añadido en rama mvc06
+    // ATENCION: Ejecutar antes los siguientes comandos:
+   //  sudo apt install php-xml   ; composer require dompdf/dompdf
+    public function pdf(){
+        ob_start(); //creamo buffer para almacenar salida php 
+        $this->index(); //generamos los datos
+        $html = ob_get_clean(); //el contenido del buffer lo guardamos en $html
+        $dompdf = new Dompdf();        
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4','portrait'); //tambien en ladscape
+        $dompdf->render(); 
+        $dompdf->stream("listausuarios.pdf",array("Attachment" => 0));  
+      }
 
     
 }//fin class

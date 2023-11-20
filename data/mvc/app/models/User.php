@@ -1,13 +1,13 @@
 <?php
   namespace App\Models;
 
-  require "../core/Model.php";
+  //require "../core/Model.php"; // Comentado en rama mvc06!!
 
   use Core\Model;
 
   use PDO; //Añadido en mvc04 . necesario para conexion bbdd
 
-  use DateTime; //Añadido mvc04 v2 despues de Read
+  use DateTime; //Añadido mvc04 v2 despues de Read 
 
 
   /* No es necesario definir atributos.     PHP permite definirlos durante la ejecucion.
@@ -105,5 +105,6 @@
       $statement->bindValue(":id",$this->id);
       return $statement->execute();    
     }//fin_save
+   
   }//final_clase
   

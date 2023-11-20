@@ -7,7 +7,8 @@
      print_r(User::find(3)); //Recupero el usuario con id=3
 */
 
-require "core/App.php"; //App sera el enrutador a los diferentes controladores...
+require "vendor/autoload.php"; // Creado en rama mvc06!!
+//require "core/App.php"; // Comentado en rama mvc06!!
 $app = new \Core\App();
 
 /*Para probar el acceso al modelo. I
